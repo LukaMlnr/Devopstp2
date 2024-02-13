@@ -13,3 +13,17 @@
 
 <br>
 
+# Question 2
+
+la commande ```bash --only=production``` permet de n'installer que les dépendances nécessaires (celles de production).
+
+```sql
+FROM node:12-alpine3.9
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install --only=production
+COPY . .
+RUN npm run build
+CMD ["node", "src/index.js"]
+```
+
